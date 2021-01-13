@@ -1,8 +1,10 @@
-package com.dodge.entity;
+package com.dodge.block;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+
+import com.dodge.entity.Entity;
 
 public class Block extends Entity{
 
@@ -13,7 +15,10 @@ public class Block extends Entity{
 	@Override
 	public void update() {
 		bounds.y+=speedy;
-		
+		if(collision(level.getPlatforme())) {
+			 speedy = 0;
+			 remove();
+		}
 	}
 
 	@Override

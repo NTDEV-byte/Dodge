@@ -12,17 +12,18 @@ public class Game extends JPanel{
 	
 	
 			/**
-	 * 
-	 */
+			 * Game 
+			 * Input
+			 * 
+			 */
 	private static final long serialVersionUID = 1L;
 			public static final int WIDTH = 800;
 			public static final int HEIGHT = 600;
-
+			public static int SPEED = 5;
 			public static Input input = new Input();
-			public static Level level = new Level();
+			public static Level level = new Level(5);
 			
 			private JFrame window;
-			
 			
 				public Game() { 
 					level.init();
@@ -37,17 +38,18 @@ public class Game extends JPanel{
 					window.pack();
 				}
 				
-				
-				
 				public void paint(Graphics g) { 
 					g.setColor(Color.black);
 					g.fillRect(0, 0, getWidth(), getHeight());
 					level.render(g);
 					level.update();
+					try {
+						Thread.sleep(SPEED);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 					repaint();
 				}
-				
-				
 				
 				public static void main(String[] args) { 
 						new Game();

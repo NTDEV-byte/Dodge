@@ -3,6 +3,7 @@ package com.dodge.entity;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.Random;
 
 import com.dodge.Game;
 import com.dodge.level.Level;
@@ -14,6 +15,7 @@ public abstract class Entity {
 		public static final int NOC = -1;
 	
 		protected Rectangle bounds;
+		protected Random random = new Random();
 		protected Color color;
 		protected int speedx = 1,speedy = 1;
 		protected boolean removed,colliding;
@@ -29,8 +31,11 @@ public abstract class Entity {
 				this.color = color;
 		}
 		
+		public Entity() { 
+		}
+	
 		
-		protected boolean collision(Entity e) { 
+		public boolean collision(Entity e) { 
 			return bounds.intersects(e.getBounds());
 		}
 		
