@@ -1,6 +1,7 @@
 package com.dodge;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JFrame;
@@ -10,19 +11,23 @@ import com.dodge.level.Level;
 
 public class Game extends JPanel{
 	
-	
+		
 			/**
 			 * Game 
 			 * Input
-			 * 
+			 * Sound
+			 * randomPlayer color + platforme 
+			 * InnerMenu
 			 */
 	private static final long serialVersionUID = 1L;
+	public static final int TOTAL_LEVELS = 8;
+	public static final Font FONT = new Font("Verdana",Font.PLAIN,80);
+	
 			public static final int WIDTH = 800;
 			public static final int HEIGHT = 600;
 			public static int SPEED = 5;
 			public static Input input = new Input();
-			public static Level level = new Level(5);
-			
+			public static Level level = new Level(TOTAL_LEVELS);
 			private JFrame window;
 			
 				public Game() { 
@@ -50,6 +55,7 @@ public class Game extends JPanel{
 					}
 					repaint();
 				}
+				
 				
 				public static void main(String[] args) { 
 						new Game();

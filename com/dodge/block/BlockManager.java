@@ -24,10 +24,9 @@ public class BlockManager extends Entity{
 				generate();
 			}
 	
-	
 			private void generate() {
 				for(int i=0;i<amount;i++) {
-					 blocks.add(new Block(new Rectangle(random.nextInt(Game.WIDTH / 2),random.nextInt(Game.HEIGHT /2),BLOCK_WIDTH,BLOCK_HEIGHT),new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))));
+					 blocks.add(new Block(new Rectangle(random.nextInt(Game.WIDTH - BLOCK_WIDTH),random.nextInt(Game.HEIGHT / 3),BLOCK_WIDTH,BLOCK_HEIGHT),new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))));
 				}
 			}
 			
@@ -69,6 +68,14 @@ public class BlockManager extends Entity{
 		for(Block b : blocks) { 
 			b.render(g);
 		}
+	}
+
+	public List<Block> getBlocks() {
+		return blocks;
+	}
+
+	public void setBlocks(List<Block> blocks) {
+		this.blocks = blocks;
 	}	
 
 }

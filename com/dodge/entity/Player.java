@@ -17,8 +17,8 @@ public class Player extends Entity{
 	
 	private Input input = Game.input;
 	private int score = 0;
-	private int lives = 5;
-	
+	private int lives = 0;
+	private boolean scoreIncreased;
 	
 	public Player(Rectangle bounds,Color c) {
 		super(bounds,c);
@@ -65,6 +65,11 @@ public class Player extends Entity{
 		renderScore(g);
 		renderLives(g);
 	}
+	
+	public boolean hasNoLives() { 
+		return lives <= 0;
+	}
+	
 	public int getScore() {
 		return score;
 	}
@@ -76,6 +81,12 @@ public class Player extends Entity{
 	}
 	public void setLives(int lives) {
 		this.lives = lives;
+	}
+	public boolean isScoreIncreased() {
+		return scoreIncreased;
+	}
+	public void setScoreIncreased(boolean scoreIncreased) {
+		this.scoreIncreased = scoreIncreased;
 	}
 
 }
