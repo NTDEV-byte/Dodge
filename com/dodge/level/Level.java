@@ -1,6 +1,7 @@
 package com.dodge.level;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -17,6 +18,8 @@ public class Level {
 		public static final int TOTAL_BLOCKS = 20;
 		public static final int STEP_SCORE = 10;
 		public static final int BLOCKS_NEXT_LEVEL = 10;
+		public static final int NEXT_LEVEL_REACHED_AT_SCORE = 100;
+		public static final Font font = new Font("Verdana",Font.PLAIN,15);
 		
 		private Player player;
 		private Platforme platforme;
@@ -48,22 +51,27 @@ public class Level {
 			if(!player.hasNoLives()) { 
 				platforme.render(g);
 				player.render(g);
+				currentLevel(g);
 				manager.get(currentLVL).render(g);
 			}
 			else {
 				menu.show(g);
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
 			}
 		}
 		
+		
+		private void currentLevel(Graphics g) {
+			 g.setColor(Color.cyan);
+			 g.setFont(font);
+			 g.drawString("Level "+(currentLVL + 1), Game.WIDTH - 70, Game.HEIGHT - 32);
+			 
+		}
+		
+		
+		
 		private void increaseDifficulty() {
-			System.out.println(currentLVL);
-			 if(player.getScore() % 20 != 0) player.setScoreIncreased(false);
-			 if(currentLVL!= manager.size() - 1 && player.getScore() % 20 == 0 && player.getScore()!=0 && !player.isScoreIncreased()) { 
+			 if(player.getScore() % NEXT_LEVEL_REACHED_AT_SCORE != 0) player.setScoreIncreased(false);
+			 if(currentLVL!= manager.size() - 1 && player.getScore() % NEXT_LEVEL_REACHED_AT_SCORE == 0 && player.getScore()!=0 && !player.isScoreIncreased()) { 
 				 if(currentLVL >= 0 && currentLVL < manager.size() - 1)
 					 player.setScoreIncreased(true);
 				 	 currentLVL++;
@@ -95,8 +103,8 @@ public class Level {
 		public BlockManager getManager() {
 			return manager.get(currentLVL);
 		}
+		
+		
 
 	
-
-
 }

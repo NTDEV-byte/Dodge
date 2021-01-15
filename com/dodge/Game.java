@@ -13,11 +13,14 @@ public class Game extends JPanel{
 	
 		
 			/**
-			 * Game 
-			 * Input
-			 * Sound
-			 * randomPlayer color + platforme 
-			 * InnerMenu
+			 * GameBase X
+			 * Input X 
+			 * randomPlayer color + platforme  X
+			 * InnerMenu X 
+			 * Sound   
+			 * Menu
+			 * HighScore
+			 * SaveScore
 			 */
 	private static final long serialVersionUID = 1L;
 	public static final int TOTAL_LEVELS = 8;
@@ -25,10 +28,10 @@ public class Game extends JPanel{
 	
 			public static final int WIDTH = 800;
 			public static final int HEIGHT = 600;
-			public static int SPEED = 5;
+			public static int SPEED = 4;
 			public static Input input = new Input();
 			public static Level level = new Level(TOTAL_LEVELS);
-			private JFrame window;
+			public static JFrame window;
 			
 				public Game() { 
 					level.init();
@@ -39,6 +42,8 @@ public class Game extends JPanel{
 					window.setLocationRelativeTo(null);
 					setPreferredSize(new Dimension(WIDTH,HEIGHT));
 					window.addKeyListener(input);
+					window.addMouseListener(input);
+					window.addMouseMotionListener(input);
 					window.add(this);
 					window.pack();
 				}

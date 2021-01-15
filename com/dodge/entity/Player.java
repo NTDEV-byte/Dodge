@@ -17,7 +17,7 @@ public class Player extends Entity{
 	
 	private Input input = Game.input;
 	private int score = 0;
-	private int lives = 0;
+	private int lives = 5;
 	private boolean scoreIncreased;
 	
 	public Player(Rectangle bounds,Color c) {
